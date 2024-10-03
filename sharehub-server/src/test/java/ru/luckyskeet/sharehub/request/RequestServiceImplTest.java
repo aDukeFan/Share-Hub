@@ -3,11 +3,11 @@ package ru.luckyskeet.sharehub.request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.luckyskeet.sharehub.exception.NotFoundException;
 import ru.luckyskeet.sharehub.item.ItemMapper;
-import ru.practicum.shareit.item.ItemMapperImpl;
 import ru.luckyskeet.sharehub.item.ItemRepository;
 import ru.luckyskeet.sharehub.request.dto.RequestDtoIncome;
 import ru.luckyskeet.sharehub.request.dto.RequestDtoWithItemList;
@@ -39,9 +39,9 @@ public class RequestServiceImplTest {
     @Mock
     private ItemRepository itemRepository;
 
-    private final RequestMapper requestMapper = new RequestMapperImpl();
+    private final RequestMapper requestMapper = Mappers.getMapper(RequestMapper.class);
 
-    private final ItemMapper itemMapper = new ItemMapperImpl();
+    private final ItemMapper itemMapper = Mappers.getMapper(ItemMapper.class);
 
     @BeforeEach
     public void setUp() {

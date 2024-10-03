@@ -5,22 +5,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import ru.luckyskeet.sharehub.booking.BookingMapper;
-import ru.practicum.shareit.booking.BookingMapperImpl;
 import ru.luckyskeet.sharehub.booking.BookingRepository;
 import ru.luckyskeet.sharehub.booking.model.Booking;
 import ru.luckyskeet.sharehub.booking.model.BookingStatus;
 import ru.luckyskeet.sharehub.exception.BadRequestException;
 import ru.luckyskeet.sharehub.exception.NotFoundException;
-import ru.luckyskeet.sharehub.item.dto.CommentDtoIncome;
-import ru.luckyskeet.sharehub.item.dto.CommentDtoOutcome;
-import ru.luckyskeet.sharehub.item.dto.ItemDtoIncome;
-import ru.luckyskeet.sharehub.item.dto.ItemDtoOutcomeAvailableRequest;
-import ru.luckyskeet.sharehub.item.dto.ItemDtoOutcomeLong;
+import ru.luckyskeet.sharehub.item.dto.*;
 import ru.luckyskeet.sharehub.item.model.Comment;
 import ru.luckyskeet.sharehub.item.model.Item;
 import ru.luckyskeet.sharehub.request.RequestRepository;
@@ -33,9 +29,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -59,11 +53,11 @@ public class ItemServiceImplTest {
     @Mock
     private BookingRepository bookingRepository;
 
-    private final ItemMapper itemMapper = new ItemMapperImpl();
+    private final ItemMapper itemMapper = Mappers.getMapper(ItemMapper.class);
 
-    private final CommentMapper commentMapper = new CommentMapperImpl();
+    private final CommentMapper commentMapper = Mappers.getMapper(CommentMapper.class);
 
-    private final BookingMapper bookingMapper = new BookingMapperImpl();
+    private final BookingMapper bookingMapper = Mappers.getMapper(BookingMapper.class);
 
     @BeforeEach
     public void setUp() {

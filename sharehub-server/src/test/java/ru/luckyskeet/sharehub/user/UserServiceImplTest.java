@@ -3,6 +3,7 @@ package ru.luckyskeet.sharehub.user;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.luckyskeet.sharehub.exception.NotFoundException;
@@ -27,7 +28,7 @@ public class UserServiceImplTest {
     @Mock
     private UserRepository repository;
 
-    private final UserMapper userMapper = new UserMapperImpl();
+    private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @BeforeEach
     public void setUp() {
