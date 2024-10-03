@@ -1,17 +1,17 @@
 # Share-Hub
-#### A service that allows users to share their items and find objects for rent. 
-#### The service consists of two modules: a gateway for validation and the main service.
 
+### Overview
+**Share-Hub** is a service that allows users to share their items and find objects for rent. 
+The service consists of two modules: a gateway for validation and the main service.
 
+### Features
+- **Written in Java 11**
+- **Based on Spring Boot 2.7.18**
+- **Utilizes PostgreSQL Database**
 
-* written in Java 11
-* based on Spring Boot 2.7.18
-* with PostgreSQL DateBase
-  
-
-### last changes
-* add requests
-* add comments
-* add bookings 
-* add users
-* add items
+### Recent Changes
+- Added **requests** functionality
+- Introduced **comments** section
+- Implemented **bookings** feature
+- Developed **user** management
+- Added **items** management system
