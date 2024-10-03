@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  sharehub-server:
+    build: sharehub-server
+    image: sharehub-server-image
+    container_name: sharehub-server-container
+    ports:
+      - "9090:9090"
+    depends_on:
+      - sharehub-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://sharehub-db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DRIVER_CLASS_NAME=org.postgresql.Driver
+
+  sharehub-db:
+    image: postgres:14-alpine
+    container_name: sharehub-db-container
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=postgres
+
+  sharehub-gateway:
+    build: sharehub-gateway
+    image: sharehub-gateway-image
+    container_name: sharehub-gateway-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sharehub-server
+    environment:
+      - SHAREHUB_SERVER_URL=http://sharehub-server:9090
