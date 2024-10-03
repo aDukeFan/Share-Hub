@@ -183,7 +183,3 @@
 - The client sends a `POST /comments` request to the **Gateway**.
 - **Gateway** validates the request and forwards it to **Main Service** to save the comment.
 - The result is returned to the client through **Gateway**.
-
----
-
-Обе версии описаны для использования в `README.md`, и их можно вставить в файл с минимальной модификацией для форматирования.
